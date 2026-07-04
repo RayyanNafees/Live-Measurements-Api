@@ -1,0 +1,69 @@
+# Live Measurements API — REST Client requests
+# Install the "REST Client" extension in VS Code, then click "Send Request" above each block.
+# Sample images: front.jpeg and left_side.jpeg in the project root.
+
+@host = localhost
+@port = 8001
+@baseUrl = http://{{host}}:{{port}}
+@heightCm = 170
+
+###
+
+# @name uploadImagesFull
+# Upload front + side images with height calibration (recommended).
+POST {{baseUrl}}/upload_images
+Content-Type: multipart/form-data; boundary=file
+
+--file
+Content-Disposition: form-data; name="front"; filename="front.jpeg"
+Content-Type: image/jpeg
+
+< ./front.jpeg
+--file
+Content-Disposition: form-data; name="left_side"; filename="left_side.jpeg"
+Content-Type: image/jpeg
+
+< ./left_side.jpeg
+--file
+Content-Disposition: form-data; name="height_cm"
+
+{{heightCm}}
+--file--
+
+###
+
+# @name uploadImagesFrontOnly
+# Upload front image only (uses default height if height_cm is omitted).
+POST {{baseUrl}}/upload_images
+Content-Type: multipart/form-data; boundary=file
+
+--file
+Content-Disposition: form-data; name="front"; filename="front.jpeg"
+Content-Type: image/jpeg
+
+< ./front.jpeg
+--file--
+
+###
+
+# @prompt heightCm Person height in centimeters
+# @name uploadImagesWithPrompt
+# Same as full upload, but prompts for height at send time.
+POST {{baseUrl}}/upload_images
+Content-Type: multipart/form-data; boundary=file
+
+--file
+Content-Disposition: form-data; name="front"; filename="front.jpeg"
+Content-Type: image/jpeg
+
+< ./front.jpeg
+--file
+Content-Disposition: form-data; name="left_side"; filename="left_side.jpeg"
+Content-Type: image/jpeg
+
+< ./left_side.jpeg
+--file
+Content-Disposition: form-data; name="height_cm"
+
+{{heightCm}}
+--file--

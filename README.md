@@ -49,7 +49,7 @@ python app.py
 
 # API Endpoint
 
-**POST** `/measurements`
+**POST** `/upload_images`
 
 > ℹ️ For reference, see the images placed  in the root directory.
 
@@ -66,10 +66,10 @@ Send a `multipart/form-data` **POST** request with the following fields:
 ###  Example using `curl`
 
 ```bash
-curl -X POST http://localhost:5000/measurements \
-  -F "front_image=@front.jpg" \
-  -F "side_image=@side.jpg" \
-  -F "user_height_cm=170"
+curl -X POST http://localhost:8001/upload_images \
+  -F "front=@front.jpeg" \
+  -F "left_side=@left_side.jpeg" \
+  -F "height_cm=170"
 ```
 
 # Measurements Provided
@@ -110,6 +110,3 @@ PRs and suggestions are welcome! Fork this repo, raise an issue, or open a pull 
 ## 📜 License
 
 MIT License. Feel free to use this for personal or commercial projects — just give credit.
-
-
-

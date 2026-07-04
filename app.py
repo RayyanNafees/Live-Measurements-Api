@@ -354,7 +354,7 @@ def validate_front_image(image_np):
                 missing_upper.append(landmark.name.replace('_', ' '))
         
         if missing_upper:
-            return False, f"Couldn't detect full body. Please make sure your full body is visible."
+            return False, "Couldn't detect full body. Please make sure your full body is visible."
 
         # Check if this might be just a face/selfie (no torso)
         nose = results.pose_landmarks.landmark[mp_holistic.PoseLandmark.NOSE]
@@ -457,4 +457,4 @@ def upload_images():
     })
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8001)
+    app.run(host='0.0.0.0', debug=True,port=8001)
