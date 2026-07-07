@@ -1,5 +1,17 @@
 # AI-Based Human Body Measurement System for Tailoring & Fashion E-Commerce
 
+## Server Setup
+
+1. Clone the repository, `cd` into the folder
+2. Run the following, ensure first that `uv` is installed
+```bash
+uv venv
+uv sync
+```
+3. For running the project, use 
+`uv run app.py`
+
+
 This project is a real-time body measurement API built with **Flask**, **MediaPipe**, **OpenCV**, and **PyTorch**. By analyzing **front and side pose images** of a person, it calculates accurate human body measurements useful for tailoring, clothing size prediction, and virtual fitting rooms.
 
 > 📸 Just send **front and side pose images** (captured using a smartphone or webcam) to this API, and receive key body measurements in centimeters — perfect for fashion retail platforms and tailor-made garment businesses.
